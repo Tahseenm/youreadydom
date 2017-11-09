@@ -1,0 +1,32 @@
+{
+  env: {
+    node: {
+      presets: [
+        ['env', {targets: {node: 'current'}}]
+      ]
+    },
+
+    lib: {
+      plugins: [
+        'transform-es2015-modules-commonjs',
+        'check-es2015-constants',
+        'transform-es2015-block-scoping',
+        'transform-es2015-arrow-functions',
+        'transform-es2015-destructuring',
+        'transform-es2015-parameters',
+        'transform-es2015-shorthand-properties',
+      ]
+    },
+
+    es: {
+      plugins: [
+        'check-es2015-constants',
+        'transform-es2015-block-scoping',
+        'transform-es2015-arrow-functions',
+        'transform-es2015-destructuring',
+        'transform-es2015-parameters',
+        'transform-es2015-shorthand-properties',
+      ]
+    },
+  }
+}

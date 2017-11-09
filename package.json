@@ -1,0 +1,110 @@
+{
+  "name": "youreadydom",
+  "version": "0.1.0",
+  "description": "A helper function for running code when the Document Object Model (DOM) is ready",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "files": [
+    "es",
+    "lib",
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "precommit": "lint-staged",
+    "cz-commit": "git-cz",
+    "size": "node -e \"process.stdout.write('\\033c\\u001b[1mGzip size: ')\" && gzip-size dist/youreadydom.min.js",
+    "lint": "eslint src test",
+    "test": "cross-env BABEL_ENV=node jest",
+    "test:watch": "npm test -- --watch",
+    "test:coverage": "npm test -- --coverage",
+    "validate": "npm run lint && npm run test:coverage",
+    "postvalidate": "node -e \"console.log('\\033c\\u001b[32m\\u001b[1mValidation(Lint + Tests) successful\\u001b[0m')\"",
+    "clean": "rimraf lib es dist coverage",
+    "prebuild": "npm run clean && npm run validate",
+    "build": "npm-run-all --parallel build:**",
+    "postbuild": "npm run size",
+    "build:commonjs": "cross-env BABEL_ENV=lib babel --copy-files src --out-dir lib",
+    "build:es": "cross-env BABEL_ENV=es babel --copy-files src --out-dir es",
+    "build:umd": "cross-env BABEL_ENV=es NODE_ENV=development rollup --config",
+    "build:umd:min": "cross-env BABEL_ENV=es NODE_ENV=production rollup --config",
+    "preversion": "npm run build",
+    "postversion": "git push && git push --tags",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "postpublish": "npm run clean",
+    "prereport-coverage": "npm run test:coverage",
+    "report-coverage": "cat ./coverage/lcov.info | codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tahseenm/youreadydom.git"
+  },
+  "keywords": [
+    "DOM",
+    "ready"
+  ],
+  "author": "Tahseen Malik <hello@tahseen.me> (https://tahseenmalik.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tahseenm/youreadydom/issues"
+  },
+  "homepage": "https://github.com/Tahseenm/youreadydom#readme",
+  "engines": {
+    "node": "8.x",
+    "npm": "5.x"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-plugin-check-es2015-constants": "^6.22.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.26.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "codecov": "^3.0.0",
+    "commitizen": "^2.9.6",
+    "cross-env": "^5.1.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "gzip-size-cli": "^2.1.0",
+    "husky": "^0.14.3",
+    "jest": "^21.2.1",
+    "lint-staged": "^4.3.0",
+    "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.51.1",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-uglify": "^2.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "jest": {
+    "testRegex": "(/test/.*\\.spec.js)$",
+    "testEnvironment": "node",
+    "setupFiles": [
+      "<rootDir>/test/setupTests.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
+  }
+}
