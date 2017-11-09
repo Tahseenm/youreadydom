@@ -72,12 +72,29 @@
 
 
 ## Library
-`youreadydom` is a **tiny**, fully [tested](https://codecov.io/github/Tahseenm/youreadydom) javascript library, written in ES6, that provides the same functionality as jQuery [`.ready()`](https://api.jquery.com/ready/) method without the jQuery overhead. Unlike jQuery, `youreadydom` is **promise based** like most _modern_ JS libraries 😎. Check out the [examples below](#examples). You can add this to your list of reasons for [why you might not need jquery](https://css-tricks.com/now-ever-might-not-need-jquery/) anymore.
+`youreadydom` is a **tiny**, fully [tested](https://codecov.io/github/Tahseenm/youreadydom) javascript library, written in ES6. It provides the same functionality as jQuery [`.ready()`](https://api.jquery.com/ready/) method without jQuery's overhead. Unlike jQuery, `youreadydom` is **promise based**—it's modern 😎. Check out the [examples below](#examples).
+
+You can add this to your list of reasons for [why you might not need jquery](https://css-tricks.com/now-ever-might-not-need-jquery/) anymore.
 
 For those unfamiliar with jQuery [`.ready()`](https://api.jquery.com/ready/) method, it provides a way to run javascript code as soon as the Document Object Model (DOM) has finished loading.
 
 #### `'DOMContentLoaded'`
 [Most browsers]((https://caniuse.com/#search=DOMContentLoaded)) provide the 'DOMContentLoaded' event which provides similar functionality but differs in that it does not execute any listener which is added after the event is fired. Internally this library adds a **single** 'DOMContentLoaded' event listener **only** if DOM content has not already loaded. The listener is removed once the event is fired and all handlers are executed in the order they are added.
+
+```javascript
+/** Comparison */
+setTimeout(() => {
+  document.addEventListener('DOMContentLoaded', () => {
+    /** 'DOMContentLoaded' event has already fired so code doesn't run */
+    alert('I will not run 😩')
+  })
+
+  domReady(() => {
+    /** youreadydom works */
+    alert('I will run 😊')
+  })
+}, 0)
+```
 
 #### `window.onload`
 The 'load' event on `window` is fired when all resources on the page have finished loading. This includes images.
@@ -109,6 +126,12 @@ Using [npm](https://www.npmjs.com/)
 Using [yarn](https://yarnpkg.com/en/)
 ```bash
 > yarn add youreadydom
+```
+
+Using CDN _(Not recommended)_
+```html
+<!-- Exposes `domReady` global function -->
+<script src="https://unpkg.com/youreadydom@1.0.0/dist/youreadydom.min.js"></script>
 ```
 
 <p>&nbsp;</p><!-- Spacing -->
