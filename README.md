@@ -1,10 +1,10 @@
 <!-- REPO BADGES -->
 <p align="center">
   <!-- Travis Build Status -->
-  <a href="https://travis-ci.org/Tahseenm/youreadyDOM">
+  <a href="https://travis-ci.org/Tahseenm/youreadydom">
     <img
       height="25"
-      src="https://img.shields.io/travis/Tahseenm/youreadyDOM.svg?style=flat-square"
+      src="https://img.shields.io/travis/Tahseenm/youreadydom.svg?style=flat-square"
       alt="Travis Build">
   </a>
 
@@ -72,7 +72,7 @@
 
 
 ## Library
-`youreadydom` is a **tiny**, fully tested javascript library, written in ES6, that provides the same functionality as jQuery [`.ready()`](https://api.jquery.com/ready/) method without the jQuery overhead. Unlike jQuery, `youreadydom` is **promise based** like most _modern_ JS libraries 😎. Check out the [examples below](#examples). You can add this to your list of reasons for [why you might not need jquery](https://css-tricks.com/now-ever-might-not-need-jquery/) anymore.
+`youreadydom` is a **tiny**, fully [tested](https://codecov.io/github/Tahseenm/youreadydom) javascript library, written in ES6, that provides the same functionality as jQuery [`.ready()`](https://api.jquery.com/ready/) method without the jQuery overhead. Unlike jQuery, `youreadydom` is **promise based** like most _modern_ JS libraries 😎. Check out the [examples below](#examples). You can add this to your list of reasons for [why you might not need jquery](https://css-tricks.com/now-ever-might-not-need-jquery/) anymore.
 
 For those unfamiliar with jQuery [`.ready()`](https://api.jquery.com/ready/) method, it provides a way to run javascript code as soon as the Document Object Model (DOM) has finished loading.
 
