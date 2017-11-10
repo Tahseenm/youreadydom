@@ -16,7 +16,7 @@
     "cz-commit": "git-cz",
     "size": "node -e \"process.stdout.write('\\033c\\u001b[1mGzip size: ')\" && gzip-size dist/youreadydom.min.js",
     "lint": "eslint src test",
-    "test": "cross-env BABEL_ENV=node jest",
+    "test": "cross-env BABEL_ENV=dev jest",
     "test:watch": "npm test -- --watch",
     "test:coverage": "npm test -- --coverage",
     "validate": "npm run lint && npm run test:coverage",

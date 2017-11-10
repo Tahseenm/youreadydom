@@ -1,6 +1,6 @@
 {
   env: {
-    node: {
+    dev: {
       presets: [
         ['env', {targets: {node: 'current'}}]
       ]
