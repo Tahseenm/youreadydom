@@ -52,10 +52,6 @@
     "url": "https://github.com/Tahseenm/youreadydom/issues"
   },
   "homepage": "https://github.com/Tahseenm/youreadydom#readme",
-  "engines": {
-    "node": "8.x",
-    "npm": "5.x"
-  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-jest": "^21.2.0",
